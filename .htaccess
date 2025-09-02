@@ -1,7 +1,10 @@
+# Existing rules from your .htaccess will stay above or below as needed
 
-location ~ \.html$ {
-    fastcgi_pass  unix:/var/run/php/php7.4-fpm.sock;
-    include       fastcgi_params;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-}
+# Parse .html and .htm files as PHP
+AddHandler application/x-httpd-php .html .htm
+# Some hosts require AddType instead:
+# AddType application/x-httpd-php .html .htm
 
+# Optional: If you want to force .php files to run as PHP 8.1 (example)
+# Adjust version according to your hosting
+# AddHandler application/x-httpd-php81 .php .html .htm
